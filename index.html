@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Italiano — Language Lab</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#5c6bc0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Italiano">
+  <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+  <div id="app">
+    <!-- Home / Branch selector -->
+    <div id="screen-home" class="screen active">
+      <header class="home-header">
+        <h1>🇮🇹 Italiano</h1>
+        <p class="subtitle">Your personal Italian learning lab</p>
+      </header>
+      <div class="branch-grid">
+        <div class="branch-card active-branch" onclick="openBranch('video-immersion')">
+          <div class="branch-icon">🎬</div>
+          <h2>Video Immersion</h2>
+          <p>Load a YouTube video and work through it phase by phase — from pure listening to full comprehension.</p>
+          <span class="branch-tag">Branch 1</span>
+        </div>
+        <div class="branch-card coming-soon">
+          <div class="branch-icon">➕</div>
+          <h2>More coming soon</h2>
+          <p>New learning branches will appear here as you build them out.</p>
+          <span class="branch-tag">Future</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Immersion Branch -->
+    <div id="screen-video-immersion" class="screen">
+      <nav class="top-nav">
+        <button class="back-btn" onclick="goHome()">← Home</button>
+        <span class="branch-label">🎬 Video Immersion</span>
+        <button class="wordlist-btn" onclick="openWordList()">📚 My Words <span id="word-count">0</span></button>
+      </nav>
+
+      <!-- Video loader -->
+      <div id="video-loader" class="panel">
+        <h2>Load a video</h2>
+        <p>Paste a YouTube URL with Italian content</p>
+        <div class="url-input-row">
+          <input type="text" id="youtube-url" placeholder="https://www.youtube.com/watch?v=..." />
+          <button onclick="loadVideo()">Load</button>
+        </div>
+        <p class="hint">Tip: search YouTube for "italiano per principianti" or any Italian content you enjoy.</p>
+        <div id="load-error" class="error hidden"></div>
+      </div>
+
+      <!-- Main session view (shown after video loaded) -->
+      <div id="session-view" class="hidden">
+        <div class="session-layout">
+
+          <!-- Left: video + phase controls -->
+          <div class="left-col">
+            <div id="player-container">
+              <div id="yt-player"></div>
+            </div>
+
+            <!-- Phase selector -->
+            <div class="phase-bar">
+              <button class="phase-btn active" data-phase="1" onclick="setPhase(1)">
+                <span class="phase-num">1</span>
+                <span class="phase-name">Immerse</span>
+              </button>
+              <div class="phase-arrow">→</div>
+              <button class="phase-btn" data-phase="2" onclick="setPhase(2)">
+                <span class="phase-num">2</span>
+                <span class="phase-name">Hunt Words</span>
+              </button>
+              <div class="phase-arrow">→</div>
+              <button class="phase-btn" data-phase="3" onclick="setPhase(3)">
+                <span class="phase-num">3</span>
+                <span class="phase-name">Learn Vocab</span>
+              </button>
+              <div class="phase-arrow">→</div>
+              <button class="phase-btn" data-phase="4" onclick="setPhase(4)">
+                <span class="phase-num">4</span>
+                <span class="phase-name">Comprehend</span>
+              </button>
+            </div>
+
+            <div class="phase-description" id="phase-description"></div>
+          </div>
+
+          <!-- Right: transcript -->
+          <div class="right-col">
+            <div id="transcript-panel">
+              <div id="transcript-header">
+                <h3>Transcript</h3>
+                <div id="transcript-status"></div>
+              </div>
+              <div id="transcript-body">
+                <div id="phase-overlay" class="hidden">
+                  <div class="overlay-message" id="overlay-message"></div>
+                </div>
+                <div id="transcript-lines"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Word List Modal -->
+    <div id="wordlist-modal" class="modal hidden">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h2>📚 My Word List</h2>
+          <button onclick="closeWordList()">✕</button>
+        </div>
+        <div id="wordlist-content">
+          <div id="wordlist-empty" class="hidden">
+            <p>No words saved yet. Click words in Phase 3 to add them!</p>
+          </div>
+          <div id="wordlist-table-wrap"></div>
+          <div class="modal-actions">
+            <button id="flashcard-btn" onclick="startFlashcards()" class="hidden">🃏 Flashcard Review</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flashcard Modal -->
+    <div id="flashcard-modal" class="modal hidden">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h2>🃏 Flashcard Review</h2>
+          <button onclick="closeFlashcards()">✕</button>
+        </div>
+        <div id="flashcard-content">
+          <div id="flashcard-progress"></div>
+          <div id="flashcard-card" class="flashcard">
+            <div class="card-front" id="card-front"></div>
+            <div class="card-back hidden" id="card-back"></div>
+          </div>
+          <div class="flashcard-actions">
+            <button id="reveal-btn" onclick="revealCard()">Reveal</button>
+            <div id="grade-btns" class="hidden">
+              <button class="grade-hard" onclick="gradeCard('hard')">😓 Hard</button>
+              <button class="grade-ok" onclick="gradeCard('ok')">🙂 Got it</button>
+              <button class="grade-easy" onclick="gradeCard('easy')">⚡ Easy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Word tooltip -->
+    <div id="word-tooltip" class="tooltip hidden">
+      <div class="tooltip-word" id="tooltip-word"></div>
+      <div class="tooltip-translation" id="tooltip-translation">
+        <span class="loading-dots">Translating...</span>
+      </div>
+      <button id="tooltip-save-btn" onclick="saveCurrentWord()">+ Save word</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
