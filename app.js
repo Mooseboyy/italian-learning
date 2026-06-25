@@ -27,6 +27,10 @@ function showScreen(id) {
   document.getElementById('screen-' + id).classList.add('active');
 }
 
+function selectLanguage(lang) {
+  if (lang === 'italian') showScreen('home');
+}
+
 function openBranch(branch) {
   showScreen(branch);
 }

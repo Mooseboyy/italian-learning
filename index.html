@@ -3,48 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Italiano — Language Lab</title>
+  <title>Language Lab</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <meta name="theme-color" content="#5c6bc0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Italiano">
+  <meta name="apple-mobile-web-app-title" content="Language Lab">
   <link rel="apple-touch-icon" href="icon-192.png">
 </head>
 <body>
   <div id="app">
-    <!-- Home / Branch selector -->
-    <div id="screen-home" class="screen active">
-      <header class="home-header">
-        <h1>🇮🇹 Italiano</h1>
-        <p class="subtitle">Your personal Italian learning lab</p>
-      </header>
-      <div class="branch-grid">
-        <div class="branch-card active-branch" onclick="openBranch('video-immersion')">
-          <div class="branch-icon">🎬</div>
-          <h2>Video Immersion</h2>
-          <p>Load a YouTube video and work through it phase by phase — from pure listening to full comprehension.</p>
-          <span class="branch-tag">Branch 1</span>
+
+    <!-- ── Screen 1: Language Select ── -->
+    <div id="screen-language" class="screen active">
+      <div class="lang-screen">
+        <div class="pixel-header">
+          <div class="pixel-title">LANGUAGE<br>LAB</div>
+          <div class="pixel-sub">SELECT YOUR LANGUAGE</div>
+          <div class="pixel-cursor">▼</div>
         </div>
-        <div class="branch-card coming-soon">
-          <div class="branch-icon">➕</div>
-          <h2>More coming soon</h2>
-          <p>New learning branches will appear here as you build them out.</p>
-          <span class="branch-tag">Future</span>
+
+        <div class="lang-grid">
+
+          <!-- Italian — ACTIVE -->
+          <div class="lang-card lang-active" onclick="selectLanguage('italian')">
+            <div class="flag-wrap">
+              <svg class="pixel-flag" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+                <!-- Italy: green / white / red vertical -->
+                <rect x="0"  y="0" width="16" height="32" fill="#009246"/>
+                <rect x="16" y="0" width="16" height="32" fill="#f0f0f0"/>
+                <rect x="32" y="0" width="16" height="32" fill="#CE2B37"/>
+                <!-- pixel grid overlay -->
+                <line x1="0" y1="8"  x2="48" y2="8"  stroke="#00000022" stroke-width="1"/>
+                <line x1="0" y1="16" x2="48" y2="16" stroke="#00000022" stroke-width="1"/>
+                <line x1="0" y1="24" x2="48" y2="24" stroke="#00000022" stroke-width="1"/>
+                <line x1="8"  y1="0" x2="8"  y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="16" y1="0" x2="16" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="24" y1="0" x2="24" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="32" y1="0" x2="32" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="40" y1="0" x2="40" y2="32" stroke="#00000022" stroke-width="1"/>
+              </svg>
+            </div>
+            <div class="lang-name">ITALIANO</div>
+            <div class="lang-native">Italian</div>
+            <div class="lang-status lang-open">► PLAY</div>
+          </div>
+
+          <!-- Spanish — Coming Soon -->
+          <div class="lang-card lang-locked">
+            <div class="flag-wrap">
+              <svg class="pixel-flag" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+                <!-- Spain: red / yellow / red horizontal -->
+                <rect x="0" y="0"  width="48" height="8"  fill="#AA151B"/>
+                <rect x="0" y="8"  width="48" height="16" fill="#F1BF00"/>
+                <rect x="0" y="24" width="48" height="8"  fill="#AA151B"/>
+                <!-- pixel grid -->
+                <line x1="0" y1="8"  x2="48" y2="8"  stroke="#00000022" stroke-width="1"/>
+                <line x1="0" y1="16" x2="48" y2="16" stroke="#00000022" stroke-width="1"/>
+                <line x1="0" y1="24" x2="48" y2="24" stroke="#00000022" stroke-width="1"/>
+                <line x1="8"  y1="0" x2="8"  y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="16" y1="0" x2="16" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="24" y1="0" x2="24" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="32" y1="0" x2="32" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="40" y1="0" x2="40" y2="32" stroke="#00000022" stroke-width="1"/>
+              </svg>
+              <div class="lock-overlay">🔒</div>
+            </div>
+            <div class="lang-name">ESPAÑOL</div>
+            <div class="lang-native">Spanish</div>
+            <div class="lang-status lang-soon">COMING SOON</div>
+          </div>
+
+          <!-- French — Coming Soon -->
+          <div class="lang-card lang-locked">
+            <div class="flag-wrap">
+              <svg class="pixel-flag" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+                <!-- France: blue / white / red vertical -->
+                <rect x="0"  y="0" width="16" height="32" fill="#002395"/>
+                <rect x="16" y="0" width="16" height="32" fill="#f0f0f0"/>
+                <rect x="32" y="0" width="16" height="32" fill="#ED2939"/>
+                <line x1="0" y1="8"  x2="48" y2="8"  stroke="#00000022" stroke-width="1"/>
+                <line x1="0" y1="16" x2="48" y2="16" stroke="#00000022" stroke-width="1"/>
+                <line x1="0" y1="24" x2="48" y2="24" stroke="#00000022" stroke-width="1"/>
+                <line x1="8"  y1="0" x2="8"  y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="16" y1="0" x2="16" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="24" y1="0" x2="24" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="32" y1="0" x2="32" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="40" y1="0" x2="40" y2="32" stroke="#00000022" stroke-width="1"/>
+              </svg>
+              <div class="lock-overlay">🔒</div>
+            </div>
+            <div class="lang-name">FRANÇAIS</div>
+            <div class="lang-native">French</div>
+            <div class="lang-status lang-soon">COMING SOON</div>
+          </div>
+
+          <!-- Portuguese — Coming Soon -->
+          <div class="lang-card lang-locked">
+            <div class="flag-wrap">
+              <svg class="pixel-flag" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+                <!-- Portugal: green (40%) / red (60%) vertical -->
+                <rect x="0"  y="0" width="19" height="32" fill="#006600"/>
+                <rect x="19" y="0" width="29" height="32" fill="#FF0000"/>
+                <!-- simplified yellow circle/shield -->
+                <rect x="15" y="11" width="2" height="10" fill="#FFD700"/>
+                <rect x="17" y="9"  width="6" height="2"  fill="#FFD700"/>
+                <rect x="17" y="21" width="6" height="2"  fill="#FFD700"/>
+                <rect x="23" y="11" width="2" height="10" fill="#FFD700"/>
+                <rect x="18" y="13" width="4" height="6"  fill="#003399"/>
+                <line x1="0" y1="8"  x2="48" y2="8"  stroke="#00000022" stroke-width="1"/>
+                <line x1="0" y1="16" x2="48" y2="16" stroke="#00000022" stroke-width="1"/>
+                <line x1="0" y1="24" x2="48" y2="24" stroke="#00000022" stroke-width="1"/>
+                <line x1="8"  y1="0" x2="8"  y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="16" y1="0" x2="16" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="24" y1="0" x2="24" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="32" y1="0" x2="32" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="40" y1="0" x2="40" y2="32" stroke="#00000022" stroke-width="1"/>
+              </svg>
+              <div class="lock-overlay">🔒</div>
+            </div>
+            <div class="lang-name">PORTUGUÊS</div>
+            <div class="lang-native">Portuguese</div>
+            <div class="lang-status lang-soon">COMING SOON</div>
+          </div>
+
+          <!-- Romanian — Coming Soon -->
+          <div class="lang-card lang-locked">
+            <div class="flag-wrap">
+              <svg class="pixel-flag" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+                <!-- Romania: blue / yellow / red vertical -->
+                <rect x="0"  y="0" width="16" height="32" fill="#002B7F"/>
+                <rect x="16" y="0" width="16" height="32" fill="#FCD116"/>
+                <rect x="32" y="0" width="16" height="32" fill="#CE1126"/>
+                <line x1="0" y1="8"  x2="48" y2="8"  stroke="#00000022" stroke-width="1"/>
+                <line x1="0" y1="16" x2="48" y2="16" stroke="#00000022" stroke-width="1"/>
+                <line x1="0" y1="24" x2="48" y2="24" stroke="#00000022" stroke-width="1"/>
+                <line x1="8"  y1="0" x2="8"  y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="16" y1="0" x2="16" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="24" y1="0" x2="24" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="32" y1="0" x2="32" y2="32" stroke="#00000022" stroke-width="1"/>
+                <line x1="40" y1="0" x2="40" y2="32" stroke="#00000022" stroke-width="1"/>
+              </svg>
+              <div class="lock-overlay">🔒</div>
+            </div>
+            <div class="lang-name">ROMÂNĂ</div>
+            <div class="lang-native">Romanian</div>
+            <div class="lang-status lang-soon">COMING SOON</div>
+          </div>
+
+          <!-- Catalan — Coming Soon -->
+          <div class="lang-card lang-locked">
+            <div class="flag-wrap">
+              <svg class="pixel-flag" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+                <!-- Catalonia: 4 red stripes on yellow -->
+                <rect x="0" y="0" width="48" height="32" fill="#FCDD09"/>
+                <rect x="0" y="3"  width="48" height="4" fill="#DA121A"/>
+                <rect x="0" y="10" width="48" height="4" fill="#DA121A"/>
+                <rect x="0" y="17" width="48" height="4" fill="#DA121A"/>
+                <rect x="0" y="24" width="48" height="4" fill="#DA121A"/>
+                <line x1="0" y1="8"  x2="48" y2="8"  stroke="#00000011" stroke-width="1"/>
+                <line x1="0" y1="16" x2="48" y2="16" stroke="#00000011" stroke-width="1"/>
+                <line x1="0" y1="24" x2="48" y2="24" stroke="#00000011" stroke-width="1"/>
+                <line x1="8"  y1="0" x2="8"  y2="32" stroke="#00000011" stroke-width="1"/>
+                <line x1="16" y1="0" x2="16" y2="32" stroke="#00000011" stroke-width="1"/>
+                <line x1="24" y1="0" x2="24" y2="32" stroke="#00000011" stroke-width="1"/>
+                <line x1="32" y1="0" x2="32" y2="32" stroke="#00000011" stroke-width="1"/>
+                <line x1="40" y1="0" x2="40" y2="32" stroke="#00000011" stroke-width="1"/>
+              </svg>
+              <div class="lock-overlay">🔒</div>
+            </div>
+            <div class="lang-name">CATALÀ</div>
+            <div class="lang-native">Catalan</div>
+            <div class="lang-status lang-soon">COMING SOON</div>
+          </div>
+
+        </div>
+
+        <div class="pixel-footer">ROMANCE LANGUAGES</div>
+      </div>
+    </div>
+
+    <!-- ── Screen 2: Branch Selector ── -->
+    <div id="screen-home" class="screen">
+      <div class="branch-screen">
+        <header class="branch-header">
+          <button class="pixel-back-btn" onclick="showScreen('language')">◄ BACK</button>
+          <div class="branch-title-wrap">
+            <svg class="branch-flag-small" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+              <rect x="0"  y="0" width="16" height="32" fill="#009246"/>
+              <rect x="16" y="0" width="16" height="32" fill="#f0f0f0"/>
+              <rect x="32" y="0" width="16" height="32" fill="#CE2B37"/>
+            </svg>
+            <h1>ITALIANO</h1>
+          </div>
+          <div style="width:80px"></div>
+        </header>
+        <p class="branch-subtitle">Choose your training</p>
+        <div class="branch-grid">
+          <div class="branch-card active-branch" onclick="openBranch('video-immersion')">
+            <div class="branch-icon">🎬</div>
+            <h2>Video Immersion</h2>
+            <p>Load a YouTube video and work through it phase by phase — from pure listening to full comprehension.</p>
+            <span class="branch-tag">Branch 1</span>
+          </div>
+          <div class="branch-card coming-soon">
+            <div class="branch-icon">➕</div>
+            <h2>More coming soon</h2>
+            <p>New learning branches will appear here as you build them out.</p>
+            <span class="branch-tag">Future</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Video Immersion Branch -->
+    <!-- ── Screen 3: Video Immersion Branch ── -->
     <div id="screen-video-immersion" class="screen">
       <nav class="top-nav">
-        <button class="back-btn" onclick="goHome()">← Home</button>
+        <button class="back-btn" onclick="goHome()">← Back</button>
         <span class="branch-label">🎬 Video Immersion</span>
         <button class="wordlist-btn" onclick="openWordList()">📚 My Words <span id="word-count">0</span></button>
       </nav>
 
-      <!-- Video loader -->
       <div id="video-loader" class="panel">
         <h2>Load a video</h2>
         <p>Paste a YouTube URL with Italian content</p>
@@ -56,17 +238,12 @@
         <div id="load-error" class="error hidden"></div>
       </div>
 
-      <!-- Main session view (shown after video loaded) -->
       <div id="session-view" class="hidden">
         <div class="session-layout">
-
-          <!-- Left: video + phase controls -->
           <div class="left-col">
             <div id="player-container">
               <div id="yt-player"></div>
             </div>
-
-            <!-- Phase selector -->
             <div class="phase-bar">
               <button class="phase-btn active" data-phase="1" onclick="setPhase(1)">
                 <span class="phase-num">1</span>
@@ -88,11 +265,8 @@
                 <span class="phase-name">Comprehend</span>
               </button>
             </div>
-
             <div class="phase-description" id="phase-description"></div>
           </div>
-
-          <!-- Right: transcript -->
           <div class="right-col">
             <div id="transcript-panel">
               <div id="transcript-header">
