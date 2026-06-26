@@ -54,12 +54,13 @@ async function authSubmit() {
 }
 
 function authGuest() {
+  localStorage.setItem('guest_mode', '1');
   showScreen('language');
 }
 
 async function authSignOut() {
   await auth.signOut();
-  // Clear in-memory state
+  localStorage.removeItem('guest_mode');
   state.wordList = [];
   state.speakingAnswers = {};
   updateWordCount();
@@ -98,8 +99,12 @@ auth.onAuthStateChanged(async (user) => {
     showScreen('language');
   } else {
     document.getElementById('user-badge')?.classList.add('hidden');
-    // No session — show login
-    showScreen('auth');
+    // No session — show login, unless they chose guest mode
+    if (localStorage.getItem('guest_mode')) {
+      showScreen('language');
+    } else {
+      showScreen('auth');
+    }
   }
 });
 
