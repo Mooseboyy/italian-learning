@@ -94,12 +94,12 @@ auth.onAuthStateChanged(async (user) => {
       if (data.speaking)  { state.speakingAnswers = data.speaking; }
     }
 
-    // Go straight to language select (skip auth screen)
-    if (document.getElementById('screen-auth').classList.contains('active')) {
-      showScreen('language');
-    }
+    // Hide loading screen and go to language select
+    showScreen('language');
   } else {
     document.getElementById('user-badge')?.classList.add('hidden');
+    // No session — show login
+    showScreen('auth');
   }
 });
 

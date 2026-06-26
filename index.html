@@ -26,7 +26,15 @@
   <!-- ══════════════════════════════════════════════════
        SCREEN 0 — Auth
   ══════════════════════════════════════════════════ -->
-  <div id="screen-auth" class="screen active">
+  <!-- ── Loading splash (shown while Firebase checks auth) ── -->
+  <div id="screen-loading" class="screen active">
+    <div class="loading-wrap">
+      <div class="loading-logo">LANGUAGE LAB</div>
+      <div class="loading-spinner"></div>
+    </div>
+  </div>
+
+  <div id="screen-auth" class="screen">
     <div class="auth-wrap">
       <div class="auth-logo">
         <div class="auth-title">LANGUAGE<br>LAB</div>
