@@ -272,6 +272,11 @@
       <div class="session-layout">
         <div class="left-col">
           <div id="player-container"><div id="yt-player"></div></div>
+            <div id="audio-only-bar" class="hidden">
+              <span class="audio-pulse"></span>
+              <span class="audio-label">Playing audio</span>
+            </div>
+            <button id="toggle-video-btn" class="toggle-video-btn hidden" onclick="toggleVideoVisibility()">🎧 Audio only</button>
           <div class="phase-bar">
             <button class="phase-btn active" data-phase="1" onclick="setPhase(1)"><span class="phase-num">1</span><span class="phase-name">Immerse</span></button>
             <div class="phase-arrow">→</div>

@@ -79,8 +79,12 @@ function loadVideo() {
   state.videoId = videoId;
   state.captions = [];
   state.currentPhase = 1;
+  videoVisible = true;
   document.getElementById('video-loader').classList.add('hidden');
   document.getElementById('session-view').classList.remove('hidden');
+  document.getElementById('toggle-video-btn').classList.remove('hidden');
+  document.getElementById('player-container').style.height = '';
+  document.getElementById('player-container').style.opacity = '';
   initPlayer(videoId);
   fetchCaptions(videoId);
   setPhase(1);
@@ -246,6 +250,28 @@ function tick() {
       if (el) { el.classList.add('active-line'); el.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
     }
     state.activeLineIdx = active;
+  }
+}
+
+// ── Video / audio toggle ───────────────────────────────────────────────────
+let videoVisible = true;
+
+function toggleVideoVisibility() {
+  videoVisible = !videoVisible;
+  const container = document.getElementById('player-container');
+  const bar       = document.getElementById('audio-only-bar');
+  const btn       = document.getElementById('toggle-video-btn');
+  if (videoVisible) {
+    container.style.height = '';
+    container.style.opacity = '';
+    bar.classList.add('hidden');
+    btn.textContent = '🎧 Audio only';
+  } else {
+    container.style.height = '0';
+    container.style.opacity = '0';
+    container.style.overflow = 'hidden';
+    bar.classList.remove('hidden');
+    btn.textContent = '📺 Show video';
   }
 }
 
