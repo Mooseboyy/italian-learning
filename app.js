@@ -109,8 +109,12 @@ function initPlayer(videoId) {
 
 function createPlayer(videoId) {
   if (state.player) { state.player.loadVideoById(videoId); return; }
+  const container = document.getElementById('player-container');
+  const w = container ? container.offsetWidth || 640 : 640;
   state.player = new YT.Player('yt-player', {
     videoId,
+    width: w,
+    height: Math.round(w * 9 / 16),
     playerVars: { rel: 0, modestbranding: 1 },
     events: { onReady: () => { state.playerReady = true; startTick(); } },
   });
