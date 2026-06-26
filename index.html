@@ -280,28 +280,31 @@
         <div class="suggestions-header">
           <span class="suggestions-label">— or try one of these —</span>
           <div class="suggestions-filters">
-            <button class="sug-filter active" onclick="filterSuggestions('all')">All</button>
-            <button class="sug-filter" onclick="filterSuggestions('A1')">A1 Beginner</button>
-            <button class="sug-filter" onclick="filterSuggestions('A2')">A2 Elementary</button>
-            <button class="sug-filter" onclick="filterSuggestions('B1')">B1 Intermediate</button>
-            <button class="sug-filter" onclick="filterSuggestions('topic')">By Topic ▾</button>
+            <button class="sug-filter active" onclick="filterSuggestions(this,'level','all')">All</button>
+            <button class="sug-filter" onclick="filterSuggestions(this,'level','A1')">A1 Beginner</button>
+            <button class="sug-filter" onclick="filterSuggestions(this,'level','A2')">A2 Elementary</button>
+            <button class="sug-filter" onclick="filterSuggestions(this,'level','B1')">B1 Intermediate</button>
+            <button class="sug-filter" onclick="filterSuggestions(this,'topic',null)">By Topic ▾</button>
           </div>
           <div class="topic-filter-row hidden" id="topic-filter-row">
-            <button class="sug-topic" onclick="filterSuggestions('topic','Basics')">Basics</button>
-            <button class="sug-topic" onclick="filterSuggestions('topic','Conversation')">Conversation</button>
-            <button class="sug-topic" onclick="filterSuggestions('topic','Food')">Food</button>
-            <button class="sug-topic" onclick="filterSuggestions('topic','Travel')">Travel</button>
-            <button class="sug-topic" onclick="filterSuggestions('topic','Daily Life')">Daily Life</button>
-            <button class="sug-topic" onclick="filterSuggestions('topic','Culture')">Culture</button>
-            <button class="sug-topic" onclick="filterSuggestions('topic','News')">News</button>
-            <button class="sug-topic" onclick="filterSuggestions('topic','Stories')">Stories</button>
-            <button class="sug-topic" onclick="filterSuggestions('topic','Phrases')">Phrases</button>
+            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Basics')">Basics</button>
+            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Conversation')">Conversation</button>
+            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Food')">Food</button>
+            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Travel')">Travel</button>
+            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Daily Life')">Daily Life</button>
+            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Culture')">Culture</button>
+            <button class="sug-topic" onclick="filterSuggestions(this,'topic','News')">News</button>
+            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Stories')">Stories</button>
+            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Phrases')">Phrases</button>
           </div>
         </div>
         <div class="suggestions-grid" id="suggestions-grid"></div>
       </div>
     </div>
     <div id="session-view" class="hidden">
+      <div class="change-video-bar">
+        <button class="change-video-btn" onclick="changeVideo()">← Change video</button>
+      </div>
       <div class="session-layout">
         <div class="left-col">
           <div id="player-container"><div id="yt-player"></div></div>

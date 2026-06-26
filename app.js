@@ -67,24 +67,24 @@ function renderSuggestions(videos) {
   `).join('');
 }
 
-function filterSuggestions(type, value) {
-  // Update active filter button
-  document.querySelectorAll('.sug-filter').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-
+function filterSuggestions(el, type, value) {
   const topicRow = document.getElementById('topic-filter-row');
-  if (type === 'topic') {
-    topicRow.classList.toggle('hidden', !topicRow.classList.contains('hidden') && !value);
-    if (!value) { topicRow.classList.remove('hidden'); return; }
-    topicRow.classList.remove('hidden');
-    document.querySelectorAll('.sug-topic').forEach(b => {
-      b.classList.toggle('active', b.textContent === value);
-    });
-    renderSuggestions(SUGGESTED_VIDEOS.filter(v => v.topic === value));
-  } else {
+
+  if (type === 'level') {
+    document.querySelectorAll('.sug-filter').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
     topicRow.classList.add('hidden');
     document.querySelectorAll('.sug-topic').forEach(b => b.classList.remove('active'));
-    renderSuggestions(type === 'all' ? SUGGESTED_VIDEOS : SUGGESTED_VIDEOS.filter(v => v.level === type));
+    renderSuggestions(value === 'all' ? SUGGESTED_VIDEOS : SUGGESTED_VIDEOS.filter(v => v.level === value));
+  } else if (type === 'topic' && !value) {
+    // Toggle topic row
+    topicRow.classList.toggle('hidden');
+    document.querySelectorAll('.sug-filter').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+  } else if (type === 'topic' && value) {
+    topicRow.classList.remove('hidden');
+    document.querySelectorAll('.sug-topic').forEach(b => b.classList.toggle('active', b.textContent === value));
+    renderSuggestions(SUGGESTED_VIDEOS.filter(v => v.topic === value));
   }
 }
 
@@ -114,6 +114,22 @@ function extractVideoId(url) {
     const m = url.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
     return m ? m[1] : null;
   }
+}
+
+function changeVideo() {
+  stopTick();
+  if (state.player) { try { state.player.stopVideo(); } catch (_) {} }
+  // Reset video visibility state
+  state.videoId = null;
+  const pc = document.getElementById('player-container');
+  pc.style.height = ''; pc.style.opacity = '';
+  document.getElementById('audio-only-bar')?.classList.add('hidden');
+  const tvb = document.getElementById('toggle-video-btn');
+  if (tvb) { tvb.textContent = '🎧 Audio only'; tvb.classList.add('hidden'); }
+  // Show loader, hide session
+  document.getElementById('session-view').classList.add('hidden');
+  document.getElementById('video-loader').classList.remove('hidden');
+  document.getElementById('youtube-url').value = '';
 }
 
 function loadVideo() {
