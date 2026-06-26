@@ -1,5 +1,5 @@
-const CACHE = 'italiano-v1';
-const ASSETS = ['/', '/index.html', '/styles.css', '/app.js', '/manifest.json'];
+const CACHE = 'italiano-v2';
+const ASSETS = ['/', '/index.html', '/styles.css', '/app.js', '/verbs.js', '/manifest.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
