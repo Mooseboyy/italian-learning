@@ -1,23 +1,28 @@
 // ── Suggested videos for the Listening branch ────────────────────────────────
 const SUGGESTED_VIDEOS = [
-  // A1 — Beginner
-  { id: 'IlARyNRBRyA', title: 'Italian for Absolute Beginners', channel: 'Italiano con Elisa', level: 'A1', topic: 'Basics' },
-  { id: 'ot-IDnhkPaI', title: 'Learn Italian While You Sleep', channel: 'Learn Italian with Lucrezia', level: 'A1', topic: 'Basics' },
-  { id: 'RlT_GRN0LOI', title: 'Italian Greetings & Phrases', channel: 'ItalianPod101', level: 'A1', topic: 'Phrases' },
-  { id: 'g1e46Tg2Abs', title: 'Numbers, Colors & Days', channel: 'Learn Italian with Lucrezia', level: 'A1', topic: 'Basics' },
-  { id: 'XfgCxWdSNDc', title: 'Italian Food Vocabulary', channel: 'ItalianPod101', level: 'A1', topic: 'Food' },
+  // ── Stories ──
+  { id: 'fKzAsVl8MQs', title: 'Cappuccetto Rosso', channel: 'Italian Fairy Tales', level: 'A1', type: 'story', topic: 'Fairy Tale' },
+  { id: 'Ywwd0VX27-s', title: 'La Storia dei Tre Orsi', channel: 'Italian Fairy Tales', level: 'A1', type: 'story', topic: 'Fairy Tale' },
+  { id: 'eMCg9CVDz0Q', title: "L'Omino di Pan di Zenzero", channel: 'Italian Fairy Tales', level: 'A1', type: 'story', topic: 'Fairy Tale' },
+  { id: '0rP0MxCc1Xo', title: 'Jack e il Fagiolo Magico', channel: 'Italian Fairy Tales', level: 'A2', type: 'story', topic: 'Fairy Tale' },
+  { id: '7u6D23m9org', title: "Il Povero e il Ricco (Grimm)", channel: 'Italian Fairy Tales', level: 'A2', type: 'story', topic: 'Fairy Tale' },
+  { id: 'xMMALvTdmo0', title: 'Il Lupo e l\'Agnello', channel: 'Italian Fairy Tales', level: 'A1', type: 'story', topic: 'Fairy Tale' },
+  { id: 't7LWqfBcQK8', title: 'The Terminal — Italian Story', channel: 'Podcast Italiano', level: 'B1', type: 'story', topic: 'Modern Story' },
+  { id: '2OcZV4iNgDk', title: 'Bellissime Storie in Italiano', channel: 'Podcast Italiano', level: 'B1', type: 'story', topic: 'Modern Story' },
+  { id: 'nTYWNAr6yJg', title: 'Italian News for Beginners', channel: 'Learn Italian Daily', level: 'A2', type: 'story', topic: 'News' },
+  { id: '-TMHzkcCjSw', title: '10 Min Conversation in Slow Italian', channel: 'Easy Italian', level: 'A2', type: 'story', topic: 'Real Talk' },
 
-  // A2 — Elementary
-  { id: 'mFBjp4cXUoQ', title: 'Simple Italian Conversations', channel: 'Italiano con Elisa', level: 'A2', topic: 'Conversation' },
-  { id: 'wDVP-QP-GrI', title: 'Italian at the Restaurant', channel: 'Podcast Italiano', level: 'A2', topic: 'Food' },
-  { id: '0V5KRniWAe0', title: 'Describing Your Day in Italian', channel: 'Learn Italian with Lucrezia', level: 'A2', topic: 'Daily Life' },
-  { id: 'V24N0Jt3Loo', title: 'Italian Travel Phrases', channel: 'ItalianPod101', level: 'A2', topic: 'Travel' },
-
-  // B1 — Intermediate
-  { id: 'MFz9n4bkMIs', title: 'News in Slow Italian', channel: 'News in Slow Italian', level: 'B1', topic: 'News' },
-  { id: 'nPVG4IHZXTU', title: 'Italian Short Story for Learners', channel: 'Podcast Italiano', level: 'B1', topic: 'Stories' },
-  { id: '1t36_W8DBWI', title: 'Talking About Italian Culture', channel: 'Italiano con Elisa', level: 'B1', topic: 'Culture' },
-  { id: 'Q94KFUUXEWE', title: 'Italian Slang & Expressions', channel: 'Learn Italian with Lucrezia', level: 'B1', topic: 'Conversation' },
+  // ── Situations ──
+  { id: 'ldnUtEkkFuQ', title: 'Al Ristorante — Ordering Food', channel: 'ItalianBites', level: 'A1', type: 'situation', topic: 'Restaurant' },
+  { id: '1XINO_zgypA', title: 'Easy Conversation at the Restaurant', channel: 'Italian for Beginners', level: 'A1', type: 'situation', topic: 'Restaurant' },
+  { id: 'hfzLAM-3LlI', title: 'Useful Phrases at the Restaurant', channel: 'Italy Made Easy', level: 'A2', type: 'situation', topic: 'Restaurant' },
+  { id: 'zW4B0QjND70', title: 'Train, Shopping & Directions (5 Dialogues)', channel: 'ItalianPod101', level: 'A2', type: 'situation', topic: 'Shopping & Travel' },
+  { id: 'wMBMHvVmwfQ', title: 'Hotel Conversation for Travelling', channel: 'Learn Italian with Lucrezia', level: 'A2', type: 'situation', topic: 'Hotel' },
+  { id: 'Mo_CQIAooHQ', title: 'At the Hotel — Booking and Stay', channel: 'ItalianPod101', level: 'A1', type: 'situation', topic: 'Hotel' },
+  { id: '2_BkEvbAbjA', title: 'Asking Directions in Italian', channel: 'ItalianPod101', level: 'A1', type: 'situation', topic: 'Directions' },
+  { id: 'dErykxGGDO4', title: 'How to Ask & Give Directions', channel: 'Italy Made Easy', level: 'A2', type: 'situation', topic: 'Directions' },
+  { id: 'puKvrKJHqRA', title: '10 Common Conversations at the Cafè', channel: 'Learn Italian Daily', level: 'A1', type: 'situation', topic: 'Café' },
+  { id: 'JyESEnvGdPA', title: 'Order at a Restaurant — Full Dialogue', channel: 'ItalianPod101', level: 'A2', type: 'situation', topic: 'Restaurant' },
 ];
 
 // ── Verb conjugation data ──────────────────────────────────────────────────

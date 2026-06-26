@@ -280,22 +280,23 @@
         <div class="suggestions-header">
           <span class="suggestions-label">— or try one of these —</span>
           <div class="suggestions-filters">
-            <button class="sug-filter active" onclick="filterSuggestions(this,'level','all')">All</button>
-            <button class="sug-filter" onclick="filterSuggestions(this,'level','A1')">A1 Beginner</button>
-            <button class="sug-filter" onclick="filterSuggestions(this,'level','A2')">A2 Elementary</button>
-            <button class="sug-filter" onclick="filterSuggestions(this,'level','B1')">B1 Intermediate</button>
-            <button class="sug-filter" onclick="filterSuggestions(this,'topic',null)">By Topic ▾</button>
+            <button class="sug-filter active" onclick="filterSuggestions(this,'all')">All</button>
+            <button class="sug-filter" onclick="filterSuggestions(this,'story')">📖 Stories</button>
+            <button class="sug-filter" onclick="filterSuggestions(this,'situation')">🗣️ Situations</button>
+            <button class="sug-filter sug-filter-level" onclick="filterSuggestions(this,'level','A1')">A1</button>
+            <button class="sug-filter sug-filter-level" onclick="filterSuggestions(this,'level','A2')">A2</button>
+            <button class="sug-filter sug-filter-level" onclick="filterSuggestions(this,'level','B1')">B1</button>
           </div>
           <div class="topic-filter-row hidden" id="topic-filter-row">
-            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Basics')">Basics</button>
-            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Conversation')">Conversation</button>
-            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Food')">Food</button>
-            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Travel')">Travel</button>
-            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Daily Life')">Daily Life</button>
-            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Culture')">Culture</button>
-            <button class="sug-topic" onclick="filterSuggestions(this,'topic','News')">News</button>
-            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Stories')">Stories</button>
-            <button class="sug-topic" onclick="filterSuggestions(this,'topic','Phrases')">Phrases</button>
+            <button class="sug-topic" data-type="story" onclick="filterTopic(this,'Fairy Tale')">Fairy Tale</button>
+            <button class="sug-topic" data-type="story" onclick="filterTopic(this,'Modern Story')">Modern Story</button>
+            <button class="sug-topic" data-type="story" onclick="filterTopic(this,'News')">News</button>
+            <button class="sug-topic" data-type="story" onclick="filterTopic(this,'Real Talk')">Real Talk</button>
+            <button class="sug-topic" data-type="situation" onclick="filterTopic(this,'Restaurant')">Restaurant</button>
+            <button class="sug-topic" data-type="situation" onclick="filterTopic(this,'Café')">Café</button>
+            <button class="sug-topic" data-type="situation" onclick="filterTopic(this,'Hotel')">Hotel</button>
+            <button class="sug-topic" data-type="situation" onclick="filterTopic(this,'Shopping & Travel')">Shopping</button>
+            <button class="sug-topic" data-type="situation" onclick="filterTopic(this,'Directions')">Directions</button>
           </div>
         </div>
         <div class="suggestions-grid" id="suggestions-grid"></div>

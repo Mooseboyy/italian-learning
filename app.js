@@ -57,7 +57,8 @@ function renderSuggestions(videos) {
       <img class="sug-thumb" src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}" loading="lazy">
       <div class="sug-info">
         <div class="sug-badges">
-          <span class="sug-level sug-level-${v.level.replace('/', '')}">${v.level}</span>
+          <span class="sug-level sug-level-${v.level}">${v.level}</span>
+          <span class="sug-type-tag sug-type-${v.type}">${v.type === 'story' ? '📖 Story' : '🗣️ Situation'}</span>
           <span class="sug-topic-tag">${v.topic}</span>
         </div>
         <div class="sug-title">${v.title}</div>
@@ -67,25 +68,33 @@ function renderSuggestions(videos) {
   `).join('');
 }
 
-function filterSuggestions(el, type, value) {
+function filterSuggestions(el, type, level) {
+  document.querySelectorAll('.sug-filter').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.sug-topic').forEach(b => b.classList.remove('active'));
+
   const topicRow = document.getElementById('topic-filter-row');
 
-  if (type === 'level') {
-    document.querySelectorAll('.sug-filter').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
+  if (type === 'all') {
     topicRow.classList.add('hidden');
-    document.querySelectorAll('.sug-topic').forEach(b => b.classList.remove('active'));
-    renderSuggestions(value === 'all' ? SUGGESTED_VIDEOS : SUGGESTED_VIDEOS.filter(v => v.level === value));
-  } else if (type === 'topic' && !value) {
-    // Toggle topic row
-    topicRow.classList.toggle('hidden');
-    document.querySelectorAll('.sug-filter').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
-  } else if (type === 'topic' && value) {
+    renderSuggestions(SUGGESTED_VIDEOS);
+  } else if (type === 'story' || type === 'situation') {
+    // Show only topic chips relevant to this type
+    document.querySelectorAll('.sug-topic').forEach(b => {
+      b.classList.toggle('hidden', b.dataset.type !== type);
+    });
     topicRow.classList.remove('hidden');
-    document.querySelectorAll('.sug-topic').forEach(b => b.classList.toggle('active', b.textContent === value));
-    renderSuggestions(SUGGESTED_VIDEOS.filter(v => v.topic === value));
+    renderSuggestions(SUGGESTED_VIDEOS.filter(v => v.type === type));
+  } else if (type === 'level') {
+    topicRow.classList.add('hidden');
+    renderSuggestions(SUGGESTED_VIDEOS.filter(v => v.level === level));
   }
+}
+
+function filterTopic(el, topic) {
+  document.querySelectorAll('.sug-topic').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderSuggestions(SUGGESTED_VIDEOS.filter(v => v.topic === topic));
 }
 
 function loadSuggestedVideo(videoId) {
