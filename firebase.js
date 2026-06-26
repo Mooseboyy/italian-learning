@@ -1,13 +1,4 @@
-// ── Firebase init ───────────────────────────────────────────────────────────
-const firebaseConfig = {
-  apiKey: "AIzaSyDQsDldVUYJ_6Tb2_r4wknM0qNuDWUrLew",
-  authDomain: "language-lab-ba68d.firebaseapp.com",
-  projectId: "language-lab-ba68d",
-  storageBucket: "language-lab-ba68d.firebasestorage.app",
-  messagingSenderId: "1072718032657",
-  appId: "1:1072718032657:web:b074c2740ae291ac5666b0"
-};
-
+// ── Firebase init (config loaded from config.js, which is gitignored) ────────
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db   = firebase.firestore();
