@@ -703,6 +703,115 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
 /* ══════════════════════════════════════════════════════
+   AUTH SCREEN
+══════════════════════════════════════════════════════ */
+.auth-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 31px, #ffffff06 31px, #ffffff06 32px),
+    repeating-linear-gradient(90deg, transparent, transparent 31px, #ffffff06 31px, #ffffff06 32px),
+    var(--bg);
+}
+.auth-logo { text-align: center; margin-bottom: 32px; }
+.auth-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  color: #fff;
+  line-height: 1.6;
+  text-shadow: 3px 3px 0 var(--accent);
+  margin-bottom: 10px;
+}
+.auth-sub { color: var(--text-muted); font-size: 0.88rem; }
+
+.auth-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 28px 24px;
+  width: 100%;
+  max-width: 380px;
+}
+.auth-tabs { display: flex; margin-bottom: 22px; border-bottom: 1px solid var(--border); }
+.auth-tab {
+  flex: 1; background: none; border: none; padding: 10px;
+  color: var(--text-muted); font-size: 0.9rem; cursor: pointer;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.auth-tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+.auth-error {
+  background: #2b0d0d; border: 1px solid var(--red);
+  color: var(--red); border-radius: 8px;
+  padding: 10px 12px; font-size: 0.85rem;
+  margin-bottom: 14px; line-height: 1.4;
+}
+.auth-input {
+  display: block; width: 100%;
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--text); border-radius: 8px;
+  padding: 11px 14px; font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+.auth-input:focus { outline: none; border-color: var(--accent); }
+
+.auth-submit {
+  display: block; width: 100%;
+  background: var(--accent); color: white; border: none;
+  padding: 12px; border-radius: 8px; font-size: 0.95rem;
+  font-weight: 600; cursor: pointer; margin-top: 4px;
+  transition: background 0.15s;
+}
+.auth-submit:hover { background: var(--accent-light); }
+.auth-submit:disabled { opacity: 0.6; cursor: default; }
+
+.auth-divider {
+  text-align: center; color: var(--text-muted);
+  font-size: 0.8rem; margin: 16px 0;
+  display: flex; align-items: center; gap: 10px;
+}
+.auth-divider::before, .auth-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.auth-guest {
+  display: block; width: 100%;
+  background: transparent; border: 1px solid var(--border);
+  color: var(--text-muted); padding: 11px;
+  border-radius: 8px; font-size: 0.9rem; cursor: pointer;
+  transition: all 0.15s;
+}
+.auth-guest:hover { border-color: var(--accent); color: var(--text); }
+.auth-guest-note {
+  text-align: center; font-size: 0.75rem;
+  color: var(--text-muted); margin-top: 10px;
+}
+
+/* User badge on language screen */
+.lang-screen-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.user-badge {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.8rem; color: var(--text-muted);
+}
+.signout-btn {
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--text-muted); padding: 4px 10px;
+  border-radius: 6px; font-size: 0.75rem; cursor: pointer;
+}
+.signout-btn:hover { border-color: var(--red); color: var(--red); }
+
+/* ══════════════════════════════════════════════════════
    SHARED HELPERS
 ══════════════════════════════════════════════════════ */
 .btn-primary {

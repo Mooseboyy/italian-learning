@@ -8,6 +8,11 @@
   <link rel="manifest" href="manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="firebase.js"></script>
   <meta name="theme-color" content="#5c6bc0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -16,6 +21,32 @@
 </head>
 <body>
 <div id="app">
+
+  <!-- ══════════════════════════════════════════════════
+       SCREEN 0 — Auth
+  ══════════════════════════════════════════════════ -->
+  <div id="screen-auth" class="screen active">
+    <div class="auth-wrap">
+      <div class="auth-logo">
+        <div class="auth-title">LANGUAGE<br>LAB</div>
+        <div class="auth-sub">Your personal language learning lab</div>
+      </div>
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tab-signin"  onclick="authSwitchTab('signin')">Sign In</button>
+          <button class="auth-tab"        id="tab-signup"  onclick="authSwitchTab('signup')">Create Account</button>
+        </div>
+        <div id="auth-error" class="auth-error hidden"></div>
+        <input type="email"    id="auth-email"    class="auth-input" placeholder="Email address" autocomplete="email"/>
+        <input type="password" id="auth-password" class="auth-input" placeholder="Password" autocomplete="current-password"/>
+        <input type="password" id="auth-password2" class="auth-input hidden" placeholder="Confirm password" autocomplete="new-password"/>
+        <button class="auth-submit" id="auth-submit-btn" onclick="authSubmit()">Sign In</button>
+        <div class="auth-divider">or</div>
+        <button class="auth-guest" onclick="authGuest()">Continue as Guest</button>
+        <p class="auth-guest-note">Guest progress is saved on this device only.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- ══════════════════════════════════════════════════
        SCREEN 1 — Language Select
@@ -160,7 +191,13 @@
           <div class="lang-status lang-soon">COMING SOON</div>
         </div>
       </div>
-      <div class="pixel-footer">ROMANCE LANGUAGES</div>
+      <div class="lang-screen-footer">
+        <div class="pixel-footer">ROMANCE LANGUAGES</div>
+        <div class="user-badge" id="user-badge">
+          <span id="user-email-display"></span>
+          <button class="signout-btn" onclick="authSignOut()">Sign out</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -486,6 +523,7 @@
 
 <script src="verbs.js"></script>
 <script src="app.js"></script>
+<script src="auth.js"></script>
 <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
