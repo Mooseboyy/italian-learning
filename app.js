@@ -54,11 +54,10 @@ function renderSuggestions(videos) {
   if (!grid) return;
   grid.innerHTML = videos.map(v => `
     <div class="sug-card" onclick="loadSuggestedVideo('${v.id}')">
-      <img class="sug-thumb" src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}" loading="lazy">
+      <div class="sug-card-icon">${v.type === 'story' ? '📖' : '🗣️'}</div>
       <div class="sug-info">
         <div class="sug-badges">
           <span class="sug-level sug-level-${v.level}">${v.level}</span>
-          <span class="sug-type-tag sug-type-${v.type}">${v.type === 'story' ? '📖 Story' : '🗣️ Situation'}</span>
           <span class="sug-topic-tag">${v.topic}</span>
         </div>
         <div class="sug-title">${v.title}</div>
