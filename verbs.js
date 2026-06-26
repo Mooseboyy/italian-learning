@@ -1,3 +1,25 @@
+// ── Suggested videos for the Listening branch ────────────────────────────────
+const SUGGESTED_VIDEOS = [
+  // A1 — Beginner
+  { id: 'IlARyNRBRyA', title: 'Italian for Absolute Beginners', channel: 'Italiano con Elisa', level: 'A1', topic: 'Basics' },
+  { id: 'ot-IDnhkPaI', title: 'Learn Italian While You Sleep', channel: 'Learn Italian with Lucrezia', level: 'A1', topic: 'Basics' },
+  { id: 'RlT_GRN0LOI', title: 'Italian Greetings & Phrases', channel: 'ItalianPod101', level: 'A1', topic: 'Phrases' },
+  { id: 'g1e46Tg2Abs', title: 'Numbers, Colors & Days', channel: 'Learn Italian with Lucrezia', level: 'A1', topic: 'Basics' },
+  { id: 'XfgCxWdSNDc', title: 'Italian Food Vocabulary', channel: 'ItalianPod101', level: 'A1', topic: 'Food' },
+
+  // A2 — Elementary
+  { id: 'mFBjp4cXUoQ', title: 'Simple Italian Conversations', channel: 'Italiano con Elisa', level: 'A2', topic: 'Conversation' },
+  { id: 'wDVP-QP-GrI', title: 'Italian at the Restaurant', channel: 'Podcast Italiano', level: 'A2', topic: 'Food' },
+  { id: '0V5KRniWAe0', title: 'Describing Your Day in Italian', channel: 'Learn Italian with Lucrezia', level: 'A2', topic: 'Daily Life' },
+  { id: 'V24N0Jt3Loo', title: 'Italian Travel Phrases', channel: 'ItalianPod101', level: 'A2', topic: 'Travel' },
+
+  // B1 — Intermediate
+  { id: 'MFz9n4bkMIs', title: 'News in Slow Italian', channel: 'News in Slow Italian', level: 'B1', topic: 'News' },
+  { id: 'nPVG4IHZXTU', title: 'Italian Short Story for Learners', channel: 'Podcast Italiano', level: 'B1', topic: 'Stories' },
+  { id: '1t36_W8DBWI', title: 'Talking About Italian Culture', channel: 'Italiano con Elisa', level: 'B1', topic: 'Culture' },
+  { id: 'Q94KFUUXEWE', title: 'Italian Slang & Expressions', channel: 'Learn Italian with Lucrezia', level: 'B1', topic: 'Conversation' },
+];
+
 // ── Verb conjugation data ──────────────────────────────────────────────────
 const PRONOUNS = ['io', 'tu', 'lui/lei', 'noi', 'voi', 'loro'];
 

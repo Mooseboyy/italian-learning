@@ -41,10 +41,60 @@ function selectLanguage(lang) {
 }
 
 function openBranch(branch) {
-  if (branch === 'speaking')      initSpeaking();
-  if (branch === 'reading')       initReading();
-  if (branch === 'verb-practice') initVerbPractice();
+  if (branch === 'video-immersion') initSuggestions();
+  if (branch === 'speaking')        initSpeaking();
+  if (branch === 'reading')         initReading();
+  if (branch === 'verb-practice')   initVerbPractice();
   showScreen(branch);
+}
+
+// ── Suggested videos ─────────────────────────────────────────────────────────
+function renderSuggestions(videos) {
+  const grid = document.getElementById('suggestions-grid');
+  if (!grid) return;
+  grid.innerHTML = videos.map(v => `
+    <div class="sug-card" onclick="loadSuggestedVideo('${v.id}')">
+      <img class="sug-thumb" src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="${v.title}" loading="lazy">
+      <div class="sug-info">
+        <div class="sug-badges">
+          <span class="sug-level sug-level-${v.level.replace('/', '')}">${v.level}</span>
+          <span class="sug-topic-tag">${v.topic}</span>
+        </div>
+        <div class="sug-title">${v.title}</div>
+        <div class="sug-channel">${v.channel}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterSuggestions(type, value) {
+  // Update active filter button
+  document.querySelectorAll('.sug-filter').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  const topicRow = document.getElementById('topic-filter-row');
+  if (type === 'topic') {
+    topicRow.classList.toggle('hidden', !topicRow.classList.contains('hidden') && !value);
+    if (!value) { topicRow.classList.remove('hidden'); return; }
+    topicRow.classList.remove('hidden');
+    document.querySelectorAll('.sug-topic').forEach(b => {
+      b.classList.toggle('active', b.textContent === value);
+    });
+    renderSuggestions(SUGGESTED_VIDEOS.filter(v => v.topic === value));
+  } else {
+    topicRow.classList.add('hidden');
+    document.querySelectorAll('.sug-topic').forEach(b => b.classList.remove('active'));
+    renderSuggestions(type === 'all' ? SUGGESTED_VIDEOS : SUGGESTED_VIDEOS.filter(v => v.level === type));
+  }
+}
+
+function loadSuggestedVideo(videoId) {
+  document.getElementById('youtube-url').value = 'https://www.youtube.com/watch?v=' + videoId;
+  loadVideo();
+}
+
+function initSuggestions() {
+  renderSuggestions(SUGGESTED_VIDEOS);
 }
 
 function goHome() {
