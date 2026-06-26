@@ -1,4 +1,15 @@
-// ── Firebase init (config loaded from config.js, which is gitignored) ────────
+// ── Firebase config ───────────────────────────────────────────────────────────
+// Client-side Firebase config is not secret — security is enforced by
+// Firestore rules and authorized domains in the Firebase console.
+const firebaseConfig = {
+  apiKey: "AIzaSyBucMNmaOzyMTDh6HNqVcfmSI8bS6hqqOA",
+  authDomain: "language-lab-ba68d.firebaseapp.com",
+  projectId: "language-lab-ba68d",
+  storageBucket: "language-lab-ba68d.firebasestorage.app",
+  messagingSenderId: "1072718032657",
+  appId: "1:1072718032657:web:b074c2740ae291ac5666b0"
+};
+
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db   = firebase.firestore();

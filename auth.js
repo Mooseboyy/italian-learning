@@ -80,8 +80,16 @@ function friendlyAuthError(code) {
   return map[code] || 'Something went wrong. Please try again.';
 }
 
+// ── Safety timeout: if Firebase doesn't resolve in 5s, show auth screen ──────
+const _loadingTimeout = setTimeout(() => {
+  if (document.getElementById('screen-loading').classList.contains('active')) {
+    showScreen(localStorage.getItem('guest_mode') ? 'language' : 'auth');
+  }
+}, 5000);
+
 // ── Auth state listener ───────────────────────────────────────────────────────
 auth.onAuthStateChanged(async (user) => {
+  clearTimeout(_loadingTimeout);
   if (user) {
     // Update UI
     const emailEl = document.getElementById('user-email-display');
