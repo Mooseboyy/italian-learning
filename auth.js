@@ -59,7 +59,7 @@ function authGuest() {
 }
 
 async function authSignOut() {
-  await auth.signOut();
+  try { await auth.signOut(); } catch (_) {}
   localStorage.removeItem('guest_mode');
   state.wordList = [];
   state.speakingAnswers = {};
